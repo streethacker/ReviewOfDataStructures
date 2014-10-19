@@ -2,17 +2,38 @@
 #-*- coding:utf-8 -*-
 
 class DoublyLinkedNode(object):
+	"""
+	node implementation of doubly linked list, containing a value field, a reference to
+	the next node and a reference to the previous node.
+	"""
 	def __init__(self, value):
 		self._itemValue = value
 		self._itemPre = None
 		self._itemNext = None
 
 class DoublyLinkedList(object):
+	"""
+	a simple doubly linked list implementation supporting the following functions:
+
+	addItem(self, value): add new node to the doubly linked list;
+	removeItem(self, value): remove the given node in the doubly linked list;
+	containItem(self, value): verify if the given node contains in the doubly linked list;
+	traverseList(self, func): visit every node in the doubly linked list one by one, with the given func;
+	reverseTraverseList(self, func): visit every node in the doubly linked list one by one(in reverse order), with the given func;
+
+	all these functions are quite resembling the corresponding functions in the standard linked list, except for dealing with
+	the additional previous reference.
+	"""
 	def __init__(self):
 		self._linkHead = None
 		self._linkTail = None
 
 	def addItem(self, value):
+		"""
+		add a new node to the doubly linked list with the given value. almost the
+		same as the standard linked list, except for dealing with the previous
+		reference.
+		"""
 		_linkedNode = DoublyLinkedNode(value)
 
 		if self._linkHead == None:
@@ -28,6 +49,9 @@ class DoublyLinkedList(object):
 		return True
 
 	def removeItem(self, value):
+		"""
+		remove a node with the given value from the doubly linked list.
+		"""
 		if self._linkHead == None:
 			return False
 
@@ -59,6 +83,9 @@ class DoublyLinkedList(object):
 		return False
 
 	def containItem(self, value):
+		"""
+		verify if a node with the given value exists in the doubly linked list.
+		"""
 		if self._linkHead == None:
 			return False
 
@@ -73,6 +100,9 @@ class DoublyLinkedList(object):
 		return True
 
 	def traverseList(self, func):
+		"""
+		visit the nodes in the linked list one by one, by the given func.
+		"""
 		if self._linkHead == None:
 			return False
 
@@ -85,6 +115,11 @@ class DoublyLinkedList(object):
 		return True
 
 	def reverseTraverseList(self, func):
+		"""
+		visit the nodes in the doubly linked list one by one(in reverse order), by the given func.
+		it's much simpler than the standard linked list, because of the reference to the previous
+		node.
+		"""
 		if self._linkHead == None:
 			return False
 
